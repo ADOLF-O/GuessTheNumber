@@ -1,0 +1,244 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #0f0f0f, #1a001f, #240046, #000000);
+  background-size: 400% 400%;
+  animation: darkGradient 15s ease infinite;
+  overflow: hidden;
+}
+
+/* Animated Background */
+@keyframes darkGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Floating Glow Effect */
+body::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 94, 0, 0.4), transparent 70%);
+  top: -200px;
+  left: -200px;
+  animation: floatGlow 10s ease-in-out infinite alternate;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.4), transparent 70%);
+  bottom: -200px;
+  right: -200px;
+  animation: floatGlow 12s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatGlow {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(80px, 60px);
+  }
+}
+
+.game-container {
+  position: relative;
+  z-index: 2;
+  backdrop-filter: blur(25px);
+  background: rgba(20, 20, 20, 0.7);
+  padding: 50px;
+  border-radius: 25px;
+  text-align: center;
+  width: 380px;
+  color: #ffffff;
+  box-shadow:
+    0 0 40px rgba(138, 43, 226, 0.5),
+    0 0 80px rgba(255, 94, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: fadeUp 1s ease forwards;
+}
+
+/* Entry Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 26px;
+  background: linear-gradient(90deg, #ff5e00, #8a2be2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p {
+  margin: 10px 0;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+input {
+  width: 85%;
+  padding: 14px;
+  margin-top: 18px;
+  border-radius: 14px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  text-align: center;
+  background: #111;
+  color: white;
+  transition: 0.3s ease;
+  box-shadow: inset 0 0 10px rgba(255, 94, 0, 0.4);
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+input:focus {
+  box-shadow:
+    0 0 15px #ff5e00,
+    0 0 30px #8a2be2;
+}
+
+/* Main Button */
+button {
+  margin-top: 18px;
+  padding: 14px 28px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: linear-gradient(45deg, #ff5e00, #8a2be2);
+  background-size: 200% 200%;
+  animation: gradientButton 5s ease infinite;
+  color: white;
+  transition: 0.3s ease;
+  box-shadow: 0 0 20px rgba(255, 94, 0, 0.6);
+}
+
+@keyframes gradientButton {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+button:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow:
+    0 0 30px #ff5e00,
+    0 0 50px #8a2be2;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Restart Button Dark Style */
+.restart {
+  background: linear-gradient(45deg, #ff2e63, #ff5e00);
+}
+
+.restart:hover {
+  box-shadow: 0 0 30px #ff2e63;
+}
+
+#message {
+  margin-top: 18px;
+  font-weight: 600;
+  min-height: 24px;
+  transition: 0.3s ease;
+}
+
+#attempts {
+  margin-top: 10px;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 768px) {
+  .game-container {
+    width: 90%;
+    padding: 35px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  input {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 15px;
+    padding: 14px;
+  }
+
+  .restart {
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-container {
+    padding: 25px;
+    border-radius: 18px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  input {
+    padding: 12px;
+  }
+
+  button {
+    padding: 12px;
+  }
+}
